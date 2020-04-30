@@ -1,0 +1,16 @@
+.carte-input{
+    display: flex;
+    justify-content: space-evenly;
+    margin-top:10%
+}
+.carte{
+    width:400px;
+    height:200px;
+background-image: url(./img/credit\ cart.jpeg);
+background-size: cover;
+}
+.input{
+    display: flex;
+    justify-content: space-evenly;
+    flex-direction: column;
+}
