@@ -12,7 +12,7 @@ class Carte extends React.Component {
       numbercard: "****************",
       name: "",
       date: "",
-      dateInput:""
+      dateInput: "",
     };
   }
   componentDidMount() {}
@@ -33,58 +33,31 @@ class Carte extends React.Component {
   };
 
   handleChangename = (event) => {
-    let regname = /^[a-zA-Z ]*$/
+    let regname = /^[a-zA-Z ]*$/;
     if (regname.test(event.target.value))
       this.setState({ name: event.target.value.toUpperCase() });
     else return alert("add a valid name");
   };
 
   handleChangedate = (event) => {
-   /*let date0=event.target.value[0]
-  
-   let date2=event.target.value[2]
-   let date3=event.target.value[3]
-   console.log(date0)
-   let regdate0=/[0-1]/
-  let regdate1=/[1-9]{1}/
-  let regdate12=/[0-2]{1}/
-    
-    if(regdate0.test(date0))
-      {console.log('aaaaaaaa')
-      let date1 =event.target.value[1]
-      console.log(date1)
-    if(((regdate1.test(date1)) && (date0==="0")) ||((regdate12.test(date1)) && (date0==="1")) ){
-      console.log('bhibi')
-      */
-      let regdate=/([0]{1}[1-9]{1}|[1]{1}[0-2]{1})\/[2]{1}[0-4]{1}/
-      this.setState({date:event.target.value.replace(/(^\d{2})$/, "$1/")});
-      if(event.target.value.length===5){
-      if(regdate.test(event.target.value)===false){
-      alert("the date: "+event.target.value+" is wrong please try again")
-      this.setState({ date: "" })
-    }
-
-   
-
+    let regdate = /([0]{1}[1-9]{1}|[1]{1}[0-2]{1})\/[2]{1}[0-4]{1}/;
+    this.setState({ date: event.target.value.replace(/(^\d{2})$/, "$1/") });
+    if (event.target.value.length === 5) {
+      if (regdate.test(event.target.value) === false) {
+        alert("the date: " + event.target.value + " is wrong please try again");
+        this.setState({ date: "" });
       }
-
-
-   
-    
-
-
-
-
-   
-   // .replace(/(\d{2})/g, '$1 ');
-  
+    }
   };
   reset = () => {
     this.setState({ numbercardInput: "" });
     this.setState({ numbercard: "****************" });
     this.setState({ name: "" });
     this.setState({ date: "" });
-    
+   
+    localStorage.setItem("number", this.state.numbercard);
+    localStorage.setItem("name", this.state.name);
+    localStorage.setItem("date", this.state.date);
   };
 
   render() {
